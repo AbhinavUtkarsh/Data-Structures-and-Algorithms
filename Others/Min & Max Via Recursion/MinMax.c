@@ -1,30 +1,31 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 #define MAX 100
-void Insertion_Sort(int *, int *);
 void input(int *, int *);
 void display(int *, int *);
+int Maximum(int size, int array[]);
+int Minimum(int size, int array[]);
+int min(int A, int B);
+int max(int A, int B);
 void Code_Details();
-
 int main()
 {
     int array[MAX];
     int size;
     int *size_p;
+    int Max, Min;
     size_p = &size;
     Code_Details();
     input(size_p, array);
     display(size_p, array);
     clock_t begin = clock();
-    Insertion_Sort(size_p, array);
+    printf("\nThe Maximum of this array is: %d ", Maximum(size, array));
+    printf("\nThe Minimum of this array is: %d ", Minimum(size, array));
     clock_t end = clock();
-    printf("\n\nThe array after sorting...\n");
-    display(size_p, array);
-    printf("\n\nThe Code took %lf ticks to run.\n\n", (double)(end - begin) / CLOCKS_PER_SEC);
+    printf("\nThe Code took %lf ticks to run.\n\n", (double)(end - begin) / CLOCKS_PER_SEC);
     return 0;
 }
-
 void input(int *size, int *array)
 {
     int i;
@@ -47,29 +48,40 @@ void display(int *size, int *array)
     }
 }
 
-void Insertion_Sort(int *size, int *array)
+int Maximum(int size, int array[])
 {
-    int j, i;
-    int key;
-
-    for (j = 1; j < *size; j++)
+    if (size > 0)
     {
-
-        key = *(array + j);
-        i = j - 1;
-        while (i >= 0 && *(array + i) > key)
-        {
-            *(array + i+1) = *(array + i);
-            i = i - 1;
-        }
-        *(array + i + 1) = key;
+        return max(array[size - 1], Maximum(size - 1, array));
+    }
+    else
+    {
+        return array[0];
     }
 }
-
+int Minimum(int size, int array[])
+{
+    if (size > 0)
+    {
+        return min(*(array + size - 1), Minimum(size - 1, array));
+    }
+    else
+    {
+        return array[0];
+    }
+}
+int min(int A, int B)
+{
+    return A < B ? A : B;
+}
+int max(int A, int B)
+{
+    return A > B ? A : B;
+}
 void Code_Details()
 {
     printf("\n ******************************************************\n");
-    printf("\n| This code demonstrates Insertion Sort via C\n");
+    printf("\n| This code demonstrates finding of Maximum & Minimum element using recursion via C\n");
     printf("\n| A code by: Abhinav Utkarsh\n");
     printf("\n ******************************************************\n");
 }

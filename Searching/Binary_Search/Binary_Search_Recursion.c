@@ -1,30 +1,57 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 #define MAX 100
-void Insertion_Sort(int *, int *);
+int number;
+int Binary_Search(int *, int, int);
 void input(int *, int *);
 void display(int *, int *);
 void Code_Details();
-
 int main()
 {
     int array[MAX];
     int size;
     int *size_p;
     size_p = &size;
+    int flag;
     Code_Details();
     input(size_p, array);
     display(size_p, array);
     clock_t begin = clock();
-    Insertion_Sort(size_p, array);
+    flag = Binary_Search(array, 0, size);
     clock_t end = clock();
-    printf("\n\nThe array after sorting...\n");
-    display(size_p, array);
-    printf("\n\nThe Code took %lf ticks to run.\n\n", (double)(end - begin) / CLOCKS_PER_SEC);
+    if (flag == 0)
+    {
+        printf("\nThe number %d not found in the given Array.\n\n", number);
+    }
+    else
+    {
+        printf("\nThe number %d found at %d. location of the Array.\n", number, flag + 1);
+    }
+
+    printf("\nThe Code took %lf ticks to run.\n\n", (double)(end - begin) / CLOCKS_PER_SEC);
     return 0;
 }
-
+int Binary_Search(int *array, int begin, int end)
+{
+    int mid = (begin + end) / 2;
+    if (begin > end)
+    {
+        return 0;
+    }
+    else if (array[mid] > number)
+    {
+        Binary_Search(array, begin, mid - 1);
+    }
+    else if (array[mid] < number)
+    {
+        Binary_Search(array, mid + 1, end);
+    }
+    else
+    {
+        return mid;
+    }
+}
 void input(int *size, int *array)
 {
     int i;
@@ -35,8 +62,9 @@ void input(int *size, int *array)
     {
         scanf("%d", &array[i]);
     }
+    printf("\n\nEnter the number you want to search in the Array: ");
+    scanf("%d", &number);
 }
-
 void display(int *size, int *array)
 {
     int i;
@@ -46,30 +74,10 @@ void display(int *size, int *array)
         printf("\t%d", *(array + i));
     }
 }
-
-void Insertion_Sort(int *size, int *array)
-{
-    int j, i;
-    int key;
-
-    for (j = 1; j < *size; j++)
-    {
-
-        key = *(array + j);
-        i = j - 1;
-        while (i >= 0 && *(array + i) > key)
-        {
-            *(array + i+1) = *(array + i);
-            i = i - 1;
-        }
-        *(array + i + 1) = key;
-    }
-}
-
 void Code_Details()
 {
     printf("\n ******************************************************\n");
-    printf("\n| This code demonstrates Insertion Sort via C\n");
+    printf("\n| This code demonstrates Binray Search with Recursion via C\n");
     printf("\n| A code by: Abhinav Utkarsh\n");
     printf("\n ******************************************************\n");
 }

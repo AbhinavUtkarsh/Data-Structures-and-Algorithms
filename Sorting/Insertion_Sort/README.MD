@@ -14,6 +14,6 @@ Just like when one plays cards and sorts them in their hands. Naturally having o
 ## Complexity Analysis
 ### Time Complexity
 As we can see insertion sort has a time complexity of - <img src="https://latex.codecogs.com/gif.latex?O(n^2)" title="O(n^2)" />
- but when the elements are already sorted then it takes only - O(n) time to scan through the array.
+ but when the elements are already sorted then it takes only - <img src="https://latex.codecogs.com/gif.latex?O(n)" title="O(n)" /> time to scan through the array.
  ### Space Complexity
- As we are not using any extra space apart from the 1 Auxilary space making it's space complexity O(1).
+ As we are not using any extra space apart from the 1 Auxiliary space making it's space complexity <img src="https://latex.codecogs.com/gif.latex?O(1)" title="O(1)" />.

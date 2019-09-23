@@ -10,6 +10,6 @@ Linear Search is the most basic searching algorithm. We can understand it by the
 *Here we have assumed that the array starts at 1st index*
 ## Complexity Analysis
 ### Time Complexity
-As we can see Linear search has a time complexity of - O(n) as we need to scan each and every array location until we have found our desired number in the array but there can also be a chance that we find our number at 1st position itself then it makes it have a complexity of O(1).
+As we can see Linear search has a time complexity of - <img src="https://latex.codecogs.com/gif.latex?O(n)" title="O(n)" /> as we need to scan each and every array location until we have found our desired number in the array but there can also be a chance that we find our number at 1st position itself then it makes it have a complexity of <img src="https://latex.codecogs.com/gif.latex?O(1)" title="O(1)" />.
  ### Space Complexity
- As we are not using any extra space hence it's space complexity O(1).
+ As we are not using any extra space hence it's space complexity <img src="https://latex.codecogs.com/gif.latex?O(1)" title="O(1)" />.

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #define MAX 100
-void Insertion_Sort(int *, int *);
+void Selection_Sort(int *, int *);
 void input(int *, int *);
 void display(int *, int *);
 void Code_Details();
@@ -17,7 +17,7 @@ int main()
     input(size_p, array);
     display(size_p, array);
     clock_t begin = clock();
-    Insertion_Sort(size_p, array);
+    Selection_Sort(size_p, array);
     clock_t end = clock();
     printf("\n\nThe array after sorting...\n");
     display(size_p, array);
@@ -47,29 +47,29 @@ void display(int *size, int *array)
     }
 }
 
-void Insertion_Sort(int *size, int *array)
+void Selection_Sort(int *size, int *array)
 {
-    int j, i;
-    int key;
+    int temp;
+    int i, j;
 
-    for (j = 1; j < *size; j++)
+    for (i = 0; i < *(size); i++)
     {
-
-        key = *(array + j);
-        i = j - 1;
-        while (i >= 0 && *(array + i) > key)
+        for (j = i + 1; j < *(size); j++)
         {
-            *(array + i+1) = *(array + i);
-            i = i - 1;
+            if (*(array + j) <= *(array + i))
+            {
+                temp = *(array + i);
+                *(array + i) = *(array + j);
+                *(array + j) = temp;
+            }
         }
-        *(array + i + 1) = key;
     }
 }
-
 void Code_Details()
 {
     printf("\n ******************************************************\n");
-    printf("\n| This code demonstrates Insertion Sort via C\n");
+    printf("\n| This code demonstrates Selection Sort via C\n");
     printf("\n| A code by: Abhinav Utkarsh\n");
     printf("\n ******************************************************\n");
+    // merge sort
 }

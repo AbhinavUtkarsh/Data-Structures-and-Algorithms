@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #define MAX 100
-void Insertion_Sort(int *, int *);
+void Quick_Sort(int *, int, int);
+int Partition_Index(int *, int, int);
 void input(int *, int *);
 void display(int *, int *);
 void Code_Details();
@@ -17,7 +18,7 @@ int main()
     input(size_p, array);
     display(size_p, array);
     clock_t begin = clock();
-    Insertion_Sort(size_p, array);
+    Quick_Sort(array, 0, size - 1);
     clock_t end = clock();
     printf("\n\nThe array after sorting...\n");
     display(size_p, array);
@@ -47,29 +48,40 @@ void display(int *size, int *array)
     }
 }
 
-void Insertion_Sort(int *size, int *array)
+void Quick_Sort(int *array, int start, int end)
 {
-    int j, i;
-    int key;
-
-    for (j = 1; j < *size; j++)
+    if (start < end)
     {
-
-        key = *(array + j);
-        i = j - 1;
-        while (i >= 0 && *(array + i) > key)
-        {
-            *(array + i+1) = *(array + i);
-            i = i - 1;
-        }
-        *(array + i + 1) = key;
+        int PI = Partition_Index(array, start, end);
+        Quick_Sort(array, start, PI - 1);
+        Quick_Sort(array, PI + 1, end);
     }
+}
+int Partition_Index(int *array, int start, int end)
+{
+    int Pivot = *(array + end); // Using last array location as the pivot element.
+    int Partition_Index = start;
+    int i, temp;
+    for (i = start; i < end; i++)
+    {
+        if (Pivot >= *(array + i))
+        {
+            temp = *(array + i);
+            *(array + i) = *(array + Partition_Index);
+            *(array + Partition_Index) = temp;
+            Partition_Index++;
+        }
+    }
+    temp = *(array + Partition_Index);
+    *(array + Partition_Index) = *(array + end);
+    *(array + end) = temp;
+    return Partition_Index;
 }
 
 void Code_Details()
 {
     printf("\n ******************************************************\n");
-    printf("\n| This code demonstrates Insertion Sort via C\n");
+    printf("\n| This code demonstrates Quick Sort via C\n");
     printf("\n| A code by: Abhinav Utkarsh\n");
     printf("\n ******************************************************\n");
 }
