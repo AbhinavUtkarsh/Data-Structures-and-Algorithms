@@ -1,6 +1,6 @@
-# Design & Analysis of Algorithms
+# Data Structures & Algorithms
 
-This Repo consists of all the basic algorithms implemented in C with its complexity analysis and a brief explanation.
+This Repo consists of all the basic algorithms implemented in C / Python with its complexity analysis and a brief explanation.
 
 Feel free to recommend any changes or give suggestions.
 

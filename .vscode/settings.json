@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "algorithm": "c",
-        "limits": "c"
+        "limits": "c",
+        "stdio.h": "c"
     },
     "files.exclude": {
         "**/.git": true,
@@ -10,5 +11,6 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/.out": true
-    }
+    },
+    "python.pythonPath": "/usr/local/bin/python3"
 }
